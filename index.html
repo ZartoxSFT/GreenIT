@@ -5,364 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AS Saint-Priest - Accueil</title>
   <meta name="description" content="Proposition de page d'accueil épurée et éco-conçue pour l'AS Saint-Priest." />
-  <style>
-    :root {
-      --bg: #f7f7f5;
-      --surface: #ffffff;
-      --text: #161616;
-      --muted: #5f5f5f;
-      --line: #dddddd;
-      --accent: #c61d23;
-      --accent-dark: #9f171c;
-      --highlight: #f1b90b;
-      --max: 1120px;
-      --radius: 14px;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.5;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 2rem));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(8px);
-    }
-
-    .topbar-inner {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      font-weight: 700;
-    }
-
-    .brand-mark {
-      width: 46px;
-      height: 46px;
-      border-radius: 10px;
-      color: #8b1116;
-      display: grid;
-      place-items: center;
-      font-size: 1rem;
-      font-weight: 800;
-      flex: 0 0 auto;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-
-    .brand-text strong {
-      font-size: 1.1rem;
-    }
-
-    .brand-text span {
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      align-items: center;
-      justify-content: flex-end;
-      font-size: 0.95rem;
-    }
-
-    .nav a {
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .nav a:hover,
-    .nav a:focus {
-      color: var(--accent);
-    }
-
-    .hero {
-      padding: 1.4rem 0 1rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 1.2rem;
-      align-items: stretch;
-    }
-
-    .hero-copy,
-    .hero-media,
-    .card,
-    .news-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-copy {
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      width: fit-content;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      background: #fff5d5;
-      color: #7c5a00;
-      font-size: 0.82rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      margin: 0 0 0.8rem;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      line-height: 1.05;
-    }
-
-    .hero-copy p {
-      margin: 0 0 1.25rem;
-      color: var(--muted);
-      max-width: 48ch;
-      font-size: 1.05rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 1rem;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      font-weight: 700;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .btn-primary:hover,
-    .btn-primary:focus {
-      background: var(--accent-dark);
-    }
-
-    .btn-secondary {
-      background: #fff;
-      border-color: var(--line);
-      color: var(--text);
-    }
-
-    .hero-media {
-      overflow: hidden;
-      min-height: 360px;
-    }
-
-    .hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .section {
-      padding: 1rem 0;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .section-header h2 {
-      margin: 0;
-      font-size: 1.6rem;
-    }
-
-    .section-header p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-
-    .card {
-      padding: 1.25rem;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 0.6rem;
-      font-size: 1.08rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-
-    .news-card {
-      overflow: hidden;
-    }
-
-    .news-card img {
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      width: 100%;
-    }
-
-    .news-body {
-      padding: 1rem;
-    }
-
-    .news-meta {
-      color: var(--muted);
-      font-size: 0.84rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-
-    .news-body h3 {
-      margin: 0 0 0.45rem;
-      font-size: 1.05rem;
-      line-height: 1.25;
-    }
-
-    .news-body p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .cta {
-      margin: 1.2rem 0 2rem;
-      background: #111;
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 1.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .cta p {
-      margin: 0.4rem 0 0;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .footer {
-      border-top: 1px solid var(--line);
-      padding: 1.4rem 0 2rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 960px) {
-      .hero-grid,
-      .grid-3,
-      .news-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .topbar-inner {
-        align-items: flex-start;
-        padding: 0.9rem 0;
-        flex-direction: column;
-      }
-
-      .nav {
-        justify-content: flex-start;
-      }
-
-      .hero-media {
-        min-height: 250px;
-      }
-
-      .cta {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
-</head>
+  <link
+    href="style.css"
+    rel="stylesheet"
+    type="text/css" />
+  </head>
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
@@ -453,46 +100,50 @@
         <div class="news-grid">
           <article class="news-card">
             <img
-              src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=900&q=70"
-              alt="Ballon sur la pelouse"
+              src="hugo.servant-67-1170x650.webp"
+              alt="Match Istre Saint-Priest"
               loading="lazy"
               width="900"
               height="506"
             />
             <div class="news-body">
-              <div class="news-meta">13 mars 2026</div>
-              <h3>Victoire importante en championnat</h3>
-              <p>Retour sur le match du week-end et résumé des temps forts de la rencontre.</p>
+              <div class="news-meta">18 mars 2026</div>
+              <h3>N2 – J21 / ISTRES FC vs AS SAINT-PRIEST: AU COMBAT !</h3>
+              <p>L’AS Saint-Priest se déplace sur la pelouse d’Istres ce samedi à 18h.</p>
             </div>
           </article>
 
           <article class="news-card">
             <img
-              src="https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&w=900&q=70"
-              alt="Maillot de football"
+              src="marius.fraisier1-2-1170x650.webp"
+              alt="Equipe U19"
               loading="lazy"
               width="900"
               height="506"
             />
             <div class="news-body">
               <div class="news-meta">12 mars 2026</div>
-              <h3>Ouverture de la billetterie</h3>
-              <p>Informations pratiques pour réserver vos places pour le prochain match à domicile.</p>
+              <h3>INFORMATIONS ASSP – OL (U19 NATIONAL)</h3>
+              <p>A l’occasion du match de U19 National opposant nos Sang & Or à l’OL ce dimanche à 15h, nous vous informons que l’accès au Stade Jacques Joly se fera uniquement à l’adresse suivante: 𝟏𝟑 𝐀𝐯𝐞𝐧𝐮𝐞 𝐉𝐞𝐚𝐧 𝐉𝐚𝐮𝐫𝐞̀𝐬 📍</p>
             </div>
           </article>
 
           <article class="news-card">
             <img
-              src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=900&q=70"
-              alt="Entraînement sur terrain de football"
+              src="hugo.servant-1-2-3-1170x650.webp"
+              alt="Maillot de foot en promo"
               loading="lazy"
               width="900"
               height="506"
             />
             <div class="news-body">
               <div class="news-meta">10 mars 2026</div>
-              <h3>Stage jeunes pendant les vacances</h3>
-              <p>Le club propose un stage de perfectionnement pour les catégories jeunes.</p>
+              <h3>PROMOTION HAUT DE SURVÊTEMENT 🆕</h3>
+              <p>Le haut de survêtement de l’ASSP est actuellement en promotion à 25€ pour toutes les tailles !</p>
+               <p>•Taille adulte (XS – S – M – L): 40€ ➡️ 𝟐𝟓€ / Disponible ici</p> 
+
+                <p>•Taille enfant (7/8 – 9/10 – 11/12 – 13/14): 35€ ➡️ 𝟐𝟓€ / Disponible ici</p>
+              
             </div>
           </article>
         </div>
